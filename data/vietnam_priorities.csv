@@ -1,0 +1,8 @@
+priority,weight
+growth,0.15
+productivity,0.15
+spillover,0.20
+export,0.15
+labor,0.10
+ai_readiness,0.20
+automation_risk,0.15

@@ -1,45 +1,18 @@
+
+
 services:
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-aideom}
-      MYSQL_USER: ${MYSQL_USER:-aideom}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-aideom_password}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
-    ports:
-      - "3307:3306"
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - mysql_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-root_password}"]
-      interval: 5s
-      timeout: 5s
-      retries: 20
-
-  backend:
-    build: ./backend
-    env_file: .env
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      - .:/workspace:cached
+    # Keeps the container running so VS Code can attach to it
+    command: /bin/sh -c "while sleep 1000; do :; done"
     ports:
-      - "8001:8000"
-    depends_on:
-      db:
-        condition: service_healthy
-    volumes:
-      - ./backend:/app
-
-  frontend:
-    build: ./frontend
-    environment:
-      VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8001/api}
-    command: npm run dev -- --host 0.0.0.0
-    ports:
-      - "5173:5173"
-    depends_on:
-      - backend
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-
-volumes:
-  mysql_data:
+      # Expose Streamlit port
+      - "8510:8501"
+      # Expose Django port
+      - "8010:8000"
+      # Expose Jupyter port (if needed)
+      - "8810:8888"
