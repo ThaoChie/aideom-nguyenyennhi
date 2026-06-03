@@ -42,6 +42,11 @@ class VietnamEconomyEnv(gym.Env):
         return self.state, {}
 
     def step(self, action):
+        if hasattr(action, 'item'):
+            action = action.item()
+        elif isinstance(action, (list, tuple, np.ndarray)):
+            action = action[0]
+            
         a = self.allocation[int(action)]
         budget = 1000
         
