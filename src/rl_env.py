@@ -42,7 +42,7 @@ class VietnamEconomyEnv(gym.Env):
         return self.state, {}
 
     def step(self, action):
-        a = self.allocation[action]
+        a = self.allocation[int(action)]
         budget = 1000
         
         self.K += a[0]*budget
