@@ -11,3 +11,4 @@ stable-baselines3>=2.0.0
 pytest>=7.0.0
 pymoo>=0.6.0
 openpyxl>=3.0.0ipynb==0.5.1
+streamlit-option-menu==0.3.6
