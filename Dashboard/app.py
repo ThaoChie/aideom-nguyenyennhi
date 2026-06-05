@@ -30,6 +30,14 @@ pages = [
     "Bài 10", "Bài 11", "Bài 12"
 ]
 
+st.markdown("""
+<div style='text-align: center; margin-bottom: 20px;'>
+    <h4 style='margin-bottom: 0px; color: #4B6EE3;'>Trường Đại học Kinh tế - ĐHQGHN</h4>
+    <h5 style='margin-bottom: 0px; color: #718096;'>Khoa Kinh tế Phát triển</h5>
+    <p style='font-style: italic; color: #A0AEC0;'>Sinh viên Nguyễn Yến Nhi</p>
+</div>
+""", unsafe_allow_html=True)
+
 selected = option_menu(
     menu_title=None,
     options=pages,
