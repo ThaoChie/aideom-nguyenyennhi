@@ -82,8 +82,8 @@ if page == pages[0]:
     with st.container(border=True):
         st.subheader("2. So sánh Ŷ dự báo vs Y thực tế")
         fig_compare = go.Figure()
-        fig_compare.add_trace(go.Scatter(x=res['years'], y=res['Y_actual'], name='Y thực tế', mode='lines+markers', line=dict(color='#E53E3E')))
-        fig_compare.add_trace(go.Scatter(x=res['years'], y=res['Y_hat'], name='Ŷ dự báo (A̅ trung bình)', mode='lines+markers', line=dict(color=LINE_COLOR, dash='dash')))
+        fig_compare.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['Y_actual'], name='Y thực tế', mode='lines+markers', line=dict(color='#E53E3E')))
+        fig_compare.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['Y_hat'], name='Ŷ dự báo (A̅ trung bình)', mode='lines+markers', line=dict(color=LINE_COLOR, dash='dash')))
         fig_compare.update_layout(title="Y thực tế vs Ŷ dự báo (Cobb-Douglas)", xaxis_title="Năm", yaxis_title="GDP (Nghìn tỷ VND)")
         st.plotly_chart(fig_compare, use_container_width=True)
         st.metric("MAPE (Mean Absolute Percentage Error)", f"{res['mape']:.2f}%")
@@ -107,10 +107,10 @@ if page == pages[0]:
     with st.container(border=True):
         st.subheader("4. Dự báo GDP Việt Nam đến 2030")
         fig_forecast = go.Figure()
-        fig_forecast.add_trace(go.Scatter(x=res['years'], y=res['Y_actual'], name='Y thực tế (2020-2025)', mode='lines+markers', line=dict(color='#E53E3E')))
-        fig_forecast.add_trace(go.Scatter(x=res['forecast_years'], y=res['forecast_series'], name='Dự báo cơ sở', mode='lines+markers', line=dict(color=LINE_COLOR)))
-        fig_forecast.add_trace(go.Scatter(x=res['forecast_years'], y=res['forecast_high_tfp'], name='Kịch bản TFP cao', mode='lines+markers', line=dict(color='#48BB78', dash='dash')))
-        fig_forecast.add_trace(go.Scatter(x=res['forecast_years'], y=res['forecast_ai_fast'], name='Kịch bản AI nhanh', mode='lines+markers', line=dict(color='#ED8936', dash='dot')))
+        fig_forecast.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['Y_actual'], name='Y thực tế (2020-2025)', mode='lines+markers', line=dict(color='#E53E3E')))
+        fig_forecast.add_trace(go.Scatter(fill='tozeroy', x=res['forecast_years'], y=res['forecast_series'], name='Dự báo cơ sở', mode='lines+markers', line=dict(color=LINE_COLOR)))
+        fig_forecast.add_trace(go.Scatter(fill='tozeroy', x=res['forecast_years'], y=res['forecast_high_tfp'], name='Kịch bản TFP cao', mode='lines+markers', line=dict(color='#48BB78', dash='dash')))
+        fig_forecast.add_trace(go.Scatter(fill='tozeroy', x=res['forecast_years'], y=res['forecast_ai_fast'], name='Kịch bản AI nhanh', mode='lines+markers', line=dict(color='#ED8936', dash='dot')))
         fig_forecast.update_layout(title="Dự báo GDP Việt Nam 2026-2030", xaxis_title="Năm", yaxis_title="GDP (Nghìn tỷ VND)")
         st.plotly_chart(fig_forecast, use_container_width=True)
         st.metric("GDP dự báo 2030 (Kịch bản cơ sở)", f"{res['gdp_2030']:,.0f} nghìn tỷ VND")
@@ -508,12 +508,12 @@ elif page == pages[7]:
     with st.container(border=True):
         st.subheader("2. Quỹ đạo tối ưu K, D, AI, H, Y, C (2026-2035)")
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=res['years'], y=res['K'], name='Vốn (K)', line=dict(color='#3182CE')))
-        fig.add_trace(go.Scatter(x=res['years'], y=res['Y'], name='Sản lượng (Y)', line=dict(color='#E53E3E')))
-        fig.add_trace(go.Scatter(x=res['years'], y=res['C'], name='Tiêu dùng (C)', line=dict(color='#38A169')))
-        fig.add_trace(go.Scatter(x=res['years'], y=res['D'], name='Số hóa (D)', yaxis='y2', line=dict(color='#D69E2E')))
-        fig.add_trace(go.Scatter(x=res['years'], y=res['H'], name='Nhân lực (H)', yaxis='y2', line=dict(color='#805AD5')))
-        fig.add_trace(go.Scatter(x=res['years'], y=res['AI'], name='AI', yaxis='y2', line=dict(color='#D53F8C', dash='dash')))
+        fig.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['K'], name='Vốn (K)', line=dict(color='#3182CE')))
+        fig.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['Y'], name='Sản lượng (Y)', line=dict(color='#E53E3E')))
+        fig.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['C'], name='Tiêu dùng (C)', line=dict(color='#38A169')))
+        fig.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['D'], name='Số hóa (D)', yaxis='y2', line=dict(color='#D69E2E')))
+        fig.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['H'], name='Nhân lực (H)', yaxis='y2', line=dict(color='#805AD5')))
+        fig.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['AI'], name='AI', yaxis='y2', line=dict(color='#D53F8C', dash='dash')))
         fig.update_layout(title='Quỹ đạo tối ưu các biến số vĩ mô', yaxis2=dict(overlaying='y', side='right', title="Chỉ số phụ"))
         st.plotly_chart(fig, use_container_width=True)
 
@@ -523,8 +523,8 @@ elif page == pages[7]:
         col1.metric("Welfare (Không cú sốc)", f"{res['welfare_opt']:,.1f}")
         col2.metric("Welfare (Có cú sốc)", f"{res['welfare_shock']:,.1f}", delta=f"{res['welfare_shock'] - res['welfare_opt']:,.1f}")
         fig2 = go.Figure()
-        fig2.add_trace(go.Scatter(x=res['years'], y=res['Y'], name='Y (Bình thường)', line=dict(color='#3182CE')))
-        fig2.add_trace(go.Scatter(x=res['years'], y=res['Y_shock'], name='Y (Cú sốc)', line=dict(color='#E53E3E', dash='dash')))
+        fig2.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['Y'], name='Y (Bình thường)', line=dict(color='#3182CE')))
+        fig2.add_trace(go.Scatter(fill='tozeroy', x=res['years'], y=res['Y_shock'], name='Y (Cú sốc)', line=dict(color='#E53E3E', dash='dash')))
         fig2.update_layout(title='So sánh quỹ đạo Sản lượng (Y) khi có cú sốc 2028')
         st.plotly_chart(fig2, use_container_width=True)
 
@@ -635,12 +635,12 @@ elif page == pages[10]:
         st.subheader("1. Đánh giá Learning Curve")
         fig = go.Figure()
         x_q = list(range(0, res['episodes'], max(1, res['episodes']//100)))
-        fig.add_trace(go.Scatter(x=x_q, y=res['q_smoothed'], mode='lines', name='Q-Learning (Tabular)', line=dict(color='#3182CE')))
+        fig.add_trace(go.Scatter(fill='tozeroy', x=x_q, y=res['q_smoothed'], mode='lines', name='Q-Learning (Tabular)', line=dict(color='#3182CE')))
         if len(res['dqn_smoothed']) > 0:
             x_dqn = list(range(0, 20000, max(1, 20000//100)))
             # Adjust x_dqn length if needed
             x_dqn = x_dqn[:len(res['dqn_smoothed'])]
-            fig.add_trace(go.Scatter(x=x_dqn, y=res['dqn_smoothed'], mode='lines', name='DQN (Neural Net)', line=dict(color='#E53E3E')))
+            fig.add_trace(go.Scatter(fill='tozeroy', x=x_dqn, y=res['dqn_smoothed'], mode='lines', name='DQN (Neural Net)', line=dict(color='#E53E3E')))
         fig.update_layout(title="Tổng phần thưởng trung bình theo Episodes", xaxis_title="Episodes", yaxis_title="Reward")
         st.plotly_chart(fig, use_container_width=True)
 
@@ -671,8 +671,6 @@ elif page == pages[11]:
     tab1, tab2, tab3, tab4 = st.tabs([" Tổng quan & Phân bổ", " Kịch bản so sánh", " Tăng trưởng GDP & Việc làm", " Rủi ro & Vùng miền"])
     
     with tab1:
-        with st.container(border=True):
-            st.subheader("Phân bổ ngân sách (Tỷ VND)")
             c1, c2, c3, c4 = st.columns(4)
             c1.metric("Hạ tầng (I)", f"{res['allocation']['I']:,.0f}")
             c2.metric("Số hóa (D)", f"{res['allocation']['D']:,.0f}")
