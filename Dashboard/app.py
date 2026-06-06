@@ -564,8 +564,7 @@ elif page == pages[8]:
               pad = 15,
               thickness = 20,
               line = dict(color = "black", width = 0.5),
-              label = res['sankey_nodes'],
-              color = ["blue", "red", "green", "orange", "purple"]
+              label = res['sankey_nodes']
             ),
             link = dict(
               source = res['sankey_links']['source'],
