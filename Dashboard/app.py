@@ -32,7 +32,7 @@ pages = [
 
 st.markdown("""
 <div style='text-align: center; margin-bottom: 20px;'>
-    <h4 style='margin-bottom: 0px; color: #4B6EE3;'>Trường Đại học Kinh tế - ĐHQGHN</h4>
+    <h4 style='margin-bottom: 0px; color: #CDB4DB;'>Trường Đại học Kinh tế - ĐHQGHN</h4>
     <h5 style='margin-bottom: 0px; color: #718096;'>Khoa Kinh tế Phát triển</h5>
     <p style='font-style: italic; color: #A0AEC0;'>Sinh viên Nguyễn Yến Nhi</p>
 </div>
@@ -47,15 +47,15 @@ selected = option_menu(
     orientation="horizontal",
     styles={
         "container": {"padding": "0!important", "background-color": "#FFFFFF", "border-radius": "12px", "box-shadow": "0 2px 4px rgba(0,0,0,0.05)", "margin-bottom": "24px"},
-        "icon": {"color": "#4B6EE3", "font-size": "16px"}, 
+        "icon": {"color": "#CDB4DB", "font-size": "16px"}, 
         "nav-link": {"font-size": "14px", "text-align": "center", "margin":"0px", "--hover-color": "#F4F7FC"},
-        "nav-link-selected": {"background-color": "#4B6EE3", "color": "white"},
+        "nav-link-selected": {"background-color": "#CDB4DB", "color": "white"},
     }
 )
 
 page = selected
 
-LINE_COLOR = '#4B6EE3'
+LINE_COLOR = '#CDB4DB'
 
 # ─── Bài 1 ───
 if page == pages[0]:
