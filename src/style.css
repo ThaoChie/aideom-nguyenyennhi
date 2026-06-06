@@ -76,3 +76,11 @@ h1 {
 [data-testid="collapsedControl"] {
     display: none;
 }
+
+/* Make expander have a white background so inputs are clearly visible */
+[data-testid="stExpander"] {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.02) !important;
+}
