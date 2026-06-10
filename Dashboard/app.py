@@ -1,11 +1,12 @@
 import streamlit as st
 import sys
 import os
-import plotly.express as px
-import plotly.io as pio
-pio.templates.default = "plotly_white"
-import plotly.graph_objects as go
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
+
+pio.templates.default = "plotly_white"
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.optimization import solve_bai01, solve_bai02, solve_bai03, solve_bai04, solve_bai05, solve_bai06, solve_bai07, solve_bai08, solve_bai09, solve_bai10, solve_bai12, solve_bai12_dashboard
