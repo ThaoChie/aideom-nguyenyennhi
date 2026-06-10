@@ -328,6 +328,29 @@ elif page == pages[3]:
                              color_continuous_scale="Reds", aspect="auto", text_auto=",.0f")
         st.plotly_chart(fig_noeq, use_container_width=True)
 
+        # --- (5) Bỏ C3: Chi phí kinh tế của giới hạn trần ngân sách vùng ---
+    with st.container(border=True):
+        st.subheader("5. Chi phí kinh tế của công bằng vùng miền (bỏ C3)")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Z* có C3 (Trần 12,000 tỷ)", f"{res['Z']:,.1f}")
+        col2.metric("Z* không C3", f"{res.get('no_c3_z', 0):,.1f}")
+        c3_cost = res.get('c3_cost', 0)
+        col3.metric("Chi phí giới hạn trần (ΔZ)", f"{c3_cost:,.1f} tỷ VND", delta=f"-{c3_cost:,.1f}")
+        if c3_cost > 0:
+            st.warning(f"Ràng buộc trần ngân sách mỗi vùng (C3 <= 12,000 tỷ) làm giảm GDP gain **{c3_cost:,.1f} tỷ VND**. "
+                       f"Việc bỏ C3 sẽ dẫn đến ngân sách tập trung toàn bộ vào các vùng có hiệu suất cao, gây mất cân đối vùng miền.")
+        else:
+            st.info("Ràng buộc C3 không ảnh hưởng đến Z* hiện tại.")
+            
+        # Heatmap so sánh bỏ C3
+        df_no_c3 = pd.DataFrame(res.get('no_c3_alloc', {})).T
+        if not df_no_c3.empty:
+            fig_no_c3 = px.imshow(df_no_c3,
+                                 labels=dict(x="Hạng mục", y="Vùng", color="Ngân sách (Tỷ VND)"),
+                                 title="Heatmap KHÔNG có ràng buộc giới hạn trần (bỏ C3)",
+                                 color_continuous_scale="Purples", aspect="auto", text_auto=",.0f")
+            st.plotly_chart(fig_no_c3, use_container_width=True)
+
 # ─── Bài 5 ───
 elif page == pages[4]:
     st.title("Bài 5: Tối ưu hóa danh mục dự án đầu tư công")
